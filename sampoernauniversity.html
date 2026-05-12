@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampoerna University | Promotional Media</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #f5f5f5;
+            --accent-color: #00ff88;
+            --card-bg: #1a1a1a;
+            --secondary-text: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 8%;
+        }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; }
+        .logo a { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.9rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2.5rem; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* Header */
+        .project-header { padding: 80px 0 40px; text-align: center; }
+        .category-tag { color: var(--accent-color); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 1.5rem 0; }
+        .project-lead { font-size: 1.1rem; color: var(--secondary-text); max-width: 750px; margin: 0 auto 3rem; text-align: center; }
+
+        .section-title { font-size: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--accent-color); padding-left: 1rem; }
+        
+        /* 4-Column Bento System */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-item img, .bento-item video { 
+            width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; 
+        }
+
+        /* ROW 1 Logic */
+        .item-tall { 
+            grid-column: span 1;
+            aspect-ratio: 9 / 16.3; 
+        } 
+
+        .item-hero-wide { 
+            grid-column: span 3; 
+            aspect-ratio: 16 / 9; 
+        }
+
+        .item-hero-wide img {
+            object-fit: cover; 
+        }
+
+        /* ROW 2: Videos */
+        .video-box-large {
+            grid-column: span 2;
+            aspect-ratio: 16 / 9;
+        }
+
+        /* IG Story Slider */
+        .story-slider { width: 100%; height: 100%; overflow: hidden; }
+        .story-track {
+            display: flex; width: 500%; height: 100%;
+            animation: story-slide 20s infinite ease-in-out;
+        }
+        .story-track img { width: 20%; height: 100%; object-fit: cover; }
+
+        @keyframes story-slide {
+            0%, 15% { transform: translateX(0); }
+            20%, 35% { transform: translateX(-20%); }
+            40%, 55% { transform: translateX(-40%); }
+            60%, 75% { transform: translateX(-60%); }
+            80%, 95% { transform: translateX(-80%); }
+            100% { transform: translateX(0); }
+        }
+
+        .item-label {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+            padding: 6px 16px; border-radius: 50px;
+            font-size: 0.75rem; color: var(--accent-color);
+            z-index: 2;
+        }
+
+        footer { padding: 4rem 0; border-top: 1px solid #222; text-align: center; color: var(--secondary-text); font-size: 0.8rem; }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .item-hero-wide, .item-tall, .video-box-large { grid-column: span 2; aspect-ratio: 16/9; }
+        }
+
+        @media (max-width: 600px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .item-hero-wide, .item-tall, .video-box-large { grid-column: span 1; height: auto; aspect-ratio: 16/9; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">← BACK</a></div>
+        <ul>
+            <li><a href="index.html#work">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <span class="category-tag">Promotional Media</span>
+        <h1>Sampoerna University</h1>
+        <div class="project-lead">
+            <p><strong>Bringing the campus to life.</strong> Designing bold <strong>promotional posters</strong> and digital assets to spotlight student work, connecting their stories with audiences from <strong>different cities</strong> and the wider public.</p>
+        </div>
+    </header>
+
+    <main>
+        <h3 class="section-title" id="marketing">Promotion & Marketing</h3>
+        <section class="bento-grid">
+            
+            <!-- ROW 1 -->
+            <div class="bento-item item-tall">
+                <div class="story-slider">
+                    <div class="story-track">
+                        <img src="files/Natasya Holy Winata 1.png" alt="Student Slide 1">
+                        <img src="files/2.png" alt="Student Slide 2">
+                        <img src="files/3.png" alt="Student Slide 3">
+                        <img src="files/4.png" alt="Student Slide 4">
+                        <img src="files/5.png" alt="Student Slide 5">
+                    </div>
+                </div>
+                <div class="item-label">IG Stories</div>
+            </div>
+
+            <div class="bento-item item-hero-wide">
+                <img src="files/3.1.png" alt="Campaign Strategy Slide">
+                <div class="item-label">Presentation Slide</div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="bento-item video-box-large">
+                <video autoplay muted loop playsinline>
+                    <source src="files/Alicia_Medan.mp4" type="video/mp4">
+                </video>
+                <div class="item-label">Medan Student Promotion</div>
+            </div>
+
+            <div class="bento-item video-box-large">
+                <video autoplay muted loop playsinline>
+                    <source src="files/Final_CLIOD_DRS.mp4" type="video/mp4">
+                </video>
+                <div class="item-label">Opening Remarks by Dr. Schott</div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+         <p>&copy; 2026 • IJENSKUY • Digital Creative.</p>
+    </footer>
+
+</body>
+</html>

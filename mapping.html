@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katha Rakyat | Design & Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #f5f5f5;
+            --accent-color: #00ff88;
+            --card-bg: #1a1a1a;
+            --secondary-text: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 8%;
+        }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; }
+        .logo a { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.9rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2.5rem; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 0.9rem; }
+
+        /* Updated Hero Layout */
+        .project-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        .category-tag {
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 1.5rem 0; }
+        .project-lead { font-size: 1.2rem; color: var(--secondary-text); max-width: 600px; margin: 0 auto 3rem; }
+
+        /* Bento Grid for Animation & Design */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Featured Animation Box */
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-tall { grid-row: span 2; }
+
+        .bento-item img, .bento-item video {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .bento-item:hover img { transform: scale(1.03); }
+
+        .item-label {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            padding: 5px 15px; border-radius: 50px;
+            font-size: 0.75rem; color: var(--accent-color);
+        }
+
+        /* Design Text Section */
+        .design-philosophy {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding: 80px 0;
+            border-top: 1px solid #222;
+        }
+
+        .philosophy-title h2 { font-size: 2rem; color: var(--text-color); }
+        .philosophy-content { color: var(--secondary-text); font-size: 1.1rem; column-count: 1; }
+        .philosophy-content strong { color: var(--accent-color); }
+
+        .action-footer {
+            text-align: center; padding-bottom: 100px;
+        }
+
+        .btn-primary {
+            background: var(--accent-color); color: #000;
+            padding: 1.2rem 3.5rem; border-radius: 100px;
+            text-decoration: none; font-weight: 700; transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2); }
+
+        footer { padding: 4rem 0; border-top: 1px solid #222; text-align: center; color: var(--secondary-text); font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; }
+            .item-large, .item-tall { grid-column: span 1; grid-row: span 1; }
+            .design-philosophy { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">← BACK</a></div>
+        <ul>
+            <li><a href="index.html#work">Work</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <span class="category-tag">Sampoerna University</span>
+        <h1>Katha Rakyat</h1>
+        <p class="project-lead">Bringing Back Old Folklore in new Style <strong>generative animation</strong> and <strong>interactive design</strong>.</p>
+    </header>
+
+    <main>
+        <!-- BENTO VISUAL GRID -->
+        <section class="bento-grid">
+            <div class="bento-item item-large">
+                <img src="main-animation.gif" alt="p5.js Animation">
+                <div class="item-label">p5.js Generative Background</div>
+            </div>
+            <div class="bento-item">
+                <img src="ui-detail-1.jpg" alt="UI Design">
+                <div class="item-label">UI Component Library</div>
+            </div>
+            <div class="bento-item">
+                <img src="typography.jpg" alt="Type Design">
+                <div class="item-label">Digital Folk Typography</div>
+            </div>
+            <div class="bento-item item-tall">
+                <img src="mobile-preview.jpg" alt="Animation Flow">
+                <div class="item-label">Responsive Motion Flow</div>
+            </div>
+            <div class="bento-item item-large">
+                <img src="interaction-demo.gif" alt="User Interaction">
+                <div class="item-label">Real-time Gesture Feedback</div>
+            </div>
+        </section>
+
+        <!-- DESIGN CONTENT -->
+        <section class="design-philosophy">
+            <div class="philosophy-title">
+                <h2>Design & <br>Animation</h2>
+            </div>
+            <div class="philosophy-content">
+                <p>
+                    The core of <strong>Katha Rakyat</strong> lies in its fluidity. By utilizing <strong>creative coding (p5.js)</strong>, the interface is not static; it breathes as the user interacts with the story. 
+                </p>
+                <br>
+                <p>
+                    Each animation is calculated in real-time, ensuring that no two storytelling sessions are visually identical. This mirrors the nature of oral traditions, where every retelling has its own unique flair. The design language uses a <strong>dark-mode minimalist aesthetic</strong> to make the cultural assets pop with high contrast.
+                </p>
+            </div>
+        </section>
+
+        <div class="action-footer">
+            <a href="#" class="btn-primary">View Live Experience</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 • Anwari • Research. Code. Narrative.</p>
+    </footer>
+
+</body>
+</html>

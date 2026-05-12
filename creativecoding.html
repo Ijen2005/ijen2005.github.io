@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Codi</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@1.2.1/dist/ml5.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #f5f5f5;
+            --accent-color: #00ff88;
+            --card-bg: #1a1a1a;
+            --secondary-text: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 8%;
+        }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; }
+        .logo a { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.9rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2.5rem; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* Header */
+        .project-header { padding: 80px 0 40px; text-align: center; }
+        .category-tag { color: var(--accent-color); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 1.5rem 0; }
+        .project-lead { font-size: 1.1rem; color: var(--secondary-text); max-width: 700px; margin: 0 auto 3rem; }
+
+        /* Optimized Bento Grid for Width */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Two columns: Canvas gets more space than Camera */
+            grid-auto-rows: 320px; /* Slightly taller for better presence */
+            gap: 25px;
+            max-width: 1300px; /* Slightly wider container */
+            margin: 0 auto 6rem;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Canvas spanning two rows for a large workspace */
+        .item-large { 
+            grid-row: span 2; 
+        }
+
+        #camera-container {
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-row: span 2; /* Matches height of the canvas */
+            position: relative;
+            overflow: hidden;
+        }
+
+        #camera-container video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            transform: scaleX(-1);
+        }
+
+        #canvas-parent { width: 100%; height: 100%; }
+
+        #controls-overlay {
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(0,0,0,0.6); padding: 15px;
+            border-radius: 20px; backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .Slider { display: block; width: 100px; margin-bottom: 8px; accent-color: var(--accent-color); }
+        .valLab { font-size: 9px; color: var(--accent-color); text-transform: uppercase; }
+
+        .label {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(0,0,0,0.7); padding: 6px 15px;
+            border-radius: 50px; font-size: 0.7rem; color: var(--accent-color);
+        }
+
+        footer { padding: 4rem 0; border-top: 1px solid #222; text-align: center; color: var(--secondary-text); font-size: 0.8rem; }
+
+        @media (max-width: 1000px) {
+            .bento-grid { 
+                grid-template-columns: 1fr; /* Stack vertically on tablets/phones */
+                grid-auto-rows: 400px; 
+            }
+            .item-large, #camera-container { grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">← BACK</a></div>
+        <ul>
+            <!-- <li><a href="index.html#stack">Tech Stack</a></li> -->
+            <li><a href="index.html#work">Projects</a></li>
+            <!-- <li><a href="#interaction">Interaction</a></li> -->
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <span class="category-tag">P5.JS/ML5.JS</span>
+        <h1>Flower Motion</h1>
+        <p class="project-lead">
+    An interactive digital flower that reacts to your movement. Built with <strong>p5.js</strong> and <strong>machine learning</strong>, the system uses hand distance to control its form—closing when far, and blooming as you move closer, creating a gentle and responsive visual experience.
+</p>
+    </header>
+
+    <main>
+        <div class="bento-grid" id="interaction">
+            <!-- Main p5 Scene (Wide) -->
+            <div class="bento-item item-large" id="canvas-parent">
+                <div id="controls-overlay"></div>
+                <div class="label">3D flower</div>
+            </div>
+
+            <!-- Camera Box (Wide) -->
+            <div class="bento-item" id="camera-container">
+                <div class="label">ML5.js HAND TRACKING</div>
+                <p id="cam-status" style="font-size: 10px; color: #444;">Waiting for camera access...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+         <p>&copy; 2026 • IJENSKUY • Digital Creative.</p>
+    </footer>
+
+    <script src="sketch.js"></script>
+</body>
+</html>

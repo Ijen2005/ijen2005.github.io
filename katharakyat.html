@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katha Rakyat | Design & Character Illustration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #f5f5f5;
+            --accent-color: #00ff88;
+            --card-bg: #1a1a1a;
+            --secondary-text: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 8%;
+        }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; }
+        .logo a { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.9rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2.5rem; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* Header */
+        .project-header { padding: 80px 0 40px; text-align: center; }
+        .category-tag { color: var(--accent-color); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 1.5rem 0; }
+        .project-lead { font-size: 1.2rem; color: var(--secondary-text); max-width: 600px; margin: 0 auto 3rem; }
+
+        .section-title { font-size: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--accent-color); padding-left: 1rem; }
+        
+        /* BENTO GRID */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item-hero-wide { grid-column: span 3; grid-row: span 2; aspect-ratio: 16 / 9; background: #000; }
+        .item-tall { grid-column: span 1; grid-row: span 2; aspect-ratio: 9 / 16; }
+
+        .bento-item video, .bento-item img { width: 100%; height: 100%; object-fit: cover; }
+        .item-hero-wide video { object-fit: contain; }
+
+        .item-label {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            padding: 5px 15px; border-radius: 50px;
+            font-size: 0.7rem; color: var(--accent-color);
+            z-index: 2;
+        }
+
+        /* CHARACTER LAYOUT SYSTEM */
+        .illustration-horizontal {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 2.5rem;
+            margin: 0 auto 6rem auto; 
+            max-width: 1000px;
+            align-items: stretch;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border-radius: 32px;
+            padding: 50px 40px; 
+            display: flex;
+            flex-direction: column; 
+            border: 1px solid rgba(255,255,255,0.03);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .char-card:hover { transform: translateY(-10px); }
+
+        /* The alignment fix container */
+        .char-img-container {
+            height: 280px; /* Adjusted height for alignment */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .char-card img { 
+            max-width: 80%; 
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+        }
+        
+        .char-info {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .char-info h4 { 
+            color: var(--accent-color); 
+            font-size: 0.65rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin-bottom: 0.75rem; 
+            opacity: 0.8;
+        }
+        .char-info h2 { font-size: 1.8rem; margin-bottom: 1.2rem; font-weight: 700; }
+        .char-info p { color: var(--secondary-text); font-size: 0.95rem; line-height: 1.7; }
+
+        footer { padding: 4rem 0; border-top: 1px solid #222; text-align: center; color: var(--secondary-text); font-size: 0.8rem; }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .item-hero-wide, .item-tall { grid-column: span 2; aspect-ratio: auto; height: 400px; }
+            .illustration-horizontal { grid-template-columns: 1fr; padding: 0 5%; }
+            .char-img-container { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">← BACK</a></div>
+        <ul>
+            <li><a href="index.html#work">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <span class="category-tag">Illustration and Animation</span>
+        <h1>Katha Rakyat</h1>
+        <p class="project-lead">Renewing old-folklore through <strong>animation and character design</strong>, transforming traditional characters into engaging visual narratives for modern audiences.</p>
+    </header>
+
+    <main>
+        <h3 class="section-title">Animation & Interaction</h3>
+        <section class="bento-grid">
+            <div class="bento-item item-hero-wide">
+                <video autoplay muted loop playsinline>
+                    <source src="files/kredits.mp4" type="video/mp4">
+                </video>
+                <div class="item-label">Credits roll</div>
+            </div>
+            
+            <div class="bento-item item-tall">
+                <video autoplay muted loop playsinline>
+                    <source src="files/kathastory.mp4" type="video/mp4">
+                </video>
+                <div class="item-label">IGS Content</div>
+            </div>
+        </section>
+
+        <h3 class="section-title">Folk Character Design</h3>
+        <section class="illustration-horizontal">
+            
+            <!-- Dawala Card -->
+            <div class="char-card">
+                <div class="char-img-container">
+                    <img src="files/ijo.png" alt="Dawala Character">
+                </div>
+                <div class="char-info">
+                    <h4>Katha Rakyat x Nyawang Rasa</h4>
+                    <h2>Dawala</h2>
+                    <p>Dawala is a composed folklore character shaped by the <strong>serok</strong> (strainer), symbolizing the filtering of emotions, and the <strong>gamelan</strong>, representing soft harmony. His even-tempered nature transforms tension into clarity.</p>
+                </div>
+            </div>
+
+            <!-- Cepot Card -->
+            <div class="char-card">
+                <div class="char-img-container">
+                    <img src="files/merah.png" alt="Cepot Character">
+                </div>
+                <div class="char-info">
+                    <h4>Katha Rakyat x Nyawang Rasa</h4>
+                    <h2>Cepot</h2>
+                    <p>Cepot is a lively folklore character shaped by the <strong>saringan</strong> (juicer), symbolizing the extraction of essence, and the <strong>angklung</strong>, representing playful rhythm. His energetic nature turns everyday moments into engaging expressions.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 • IJENSKUY • Digital Creative.</p>
+    </footer>
+
+</body>
+</html>
